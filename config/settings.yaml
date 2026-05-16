@@ -1,0 +1,153 @@
+project:
+  name: mcis
+  random_seed: 42
+  data_validity_mode: mixed
+  claim_level: descriptive_evidence
+
+data:
+  raw_dir: data/raw
+  interim_dir: data/interim
+  processed_dir: data/processed
+  aggregated_dir: data/aggregated
+  primary_file: ais_blacksea_12m.csv
+  dev_file: ais_blacksea_6m.csv
+
+conflict:
+  t0: "2022-02-24"
+  zone_name: "Black Sea / Sea of Azov"
+  pre_window_days: 90
+  post_window_days: 90
+  event_study_windows: [-30, -21, -14, -7, -3, 0, 3, 7, 14, 21, 30]
+
+spatial:
+  lon_min: 27.5
+  lon_max: 41.5
+  lat_min: 40.5
+  lat_max: 46.8
+  grid_resolution_deg: 0.5
+  grid_resolution_fine_deg: 0.25
+
+temporal:
+  time_bucket: "1D"
+  time_bucket_fine: "6h"
+  timestamp_col: posDt
+
+cleaning:
+  sog_max: 50.0
+  sog_min: 0.0
+  rot_clamp: 127.0
+  rot_no_info_value: 128
+  cog_valid_max: 360.0
+  lon_bounds: [27.5, 41.5]
+  lat_bounds: [40.5, 46.8]
+  heading_no_info: 511
+  navstatus_unknown: [95, 98, 99]
+  length_zero_as_null: true
+  width_zero_as_null: true
+  min_vessel_obs: 3
+
+features:
+  ais_silence_gap_hours: 24
+  rot_spike_threshold: 20.0
+  speed_anomaly_zscore: 3.0
+  entropy_time_window: "7D"
+  military_vessel_types:
+    - "LAW ENFORCE"
+    - "SAR"
+    - "PILOT VESSEL"
+    - "MANNED VTS"
+  cargo_vessel_types:
+    - "BULK CARRIER"
+    - "GENERAL CARGO SHIP"
+    - "GENERAL CARGO"
+    - "CARGO"
+    - "CONTAINER"
+    - "CARGO RO RO"
+    - "VEHICLE CARRIER"
+    - "SPECIAL CARGO SHIP"
+  tanker_types:
+    - "LIQUID TANKER"
+    - "OIL PRODUCTS TANKER"
+    - "OIL/CHEMICAL TANKER"
+    - "LNG TANKER"
+    - "LPG TANKER"
+    - "TANKER"
+    - "BUNKERING TANKER"
+  flag_risk_groups:
+    russia: ["RU"]
+    ukraine: ["UA"]
+    nato: ["TR", "RO", "BG", "GR"]
+    convenience: ["PA", "MH", "LR", "MT", "CY", "BZ"]
+
+aggregation:
+  metrics:
+    - vessel_count
+    - unique_mmsi
+    - mean_sog
+    - std_sog
+    - mean_rot
+    - max_abs_rot
+    - rot_spike_count
+    - ais_silence_count
+    - mean_draught
+    - cargo_fraction
+    - tanker_fraction
+    - military_fraction
+    - russian_flag_fraction
+    - ukrainian_flag_fraction
+    - route_entropy
+    - cog_variance
+    - sat_src_fraction
+
+analysis:
+  significance_level: 0.05
+  granger_max_lag: 14
+  its_polynomial_degree: 2
+  did_control_zone: "mediterranean"
+  event_study_metric: "vessel_count"
+
+model:
+  formulation: "early_warning_anomaly"
+  target_col: "conflict_onset"
+  lookahead_days: 7
+  early_warning_window_days: 30
+  train_normal_start: "2021-08-24"
+  train_normal_end: "2021-12-25"
+  calibration_start: "2021-12-26"
+  calibration_end: "2022-01-24"
+  event_eval_start: "2022-01-25"
+  event_eval_end: "2022-02-23"
+  post_event_start: "2022-02-24"
+  post_event_end: "2022-08-24"
+  features_to_use:
+    - vessel_count
+    - mean_sog
+    - std_sog
+    - max_abs_rot
+    - rot_spike_count
+    - ais_silence_count
+    - cargo_fraction
+    - tanker_fraction
+    - russian_flag_fraction
+    - route_entropy
+    - cog_variance
+
+validation:
+  forbidden_features:
+    - days_to_t0
+    - post_conflict
+    - conflict_onset
+    - warning_window
+    - event_window
+    - date
+    - time_bucket
+  min_rows_per_day: 10
+  min_unique_mmsi_per_day: 3
+
+output:
+  figures_dir: outputs/figures
+  tables_dir: outputs/tables
+  models_dir: outputs/models
+  model_registry_dir: outputs/models/registry
+  dpi: 300
+  figure_format: png
