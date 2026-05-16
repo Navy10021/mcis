@@ -1,20 +1,46 @@
-# MCIS (Maritime Conflict Intelligence System)
+# 🚢 MCIS — Maritime Conflict Intelligence System
 
-MCIS is a research-oriented Python framework for detecting maritime behavioral anomalies and supporting early-warning analysis using AIS (Automatic Identification System) data.
+<p align="center">
+  <strong>A research-grade AIS analytics framework for maritime anomaly detection and early-warning studies.</strong>
+</p>
 
-It is designed for reproducible conflict-adjacent maritime analytics, with an initial focus on Black Sea traffic dynamics around **February 24, 2022 (T0)**.
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-green">
+  <img alt="Status" src="https://img.shields.io/badge/Status-Research%20Pipeline-6A5ACD">
+</p>
+
+MCIS is a reproducible Python framework for analyzing AIS (Automatic Identification System) data to detect maritime behavioral anomalies around conflict-relevant events.
+
+The current primary case study is Black Sea maritime dynamics around **February 24, 2022 (T0)**.
 
 ---
 
-## Key Objectives
+## ✨ Why MCIS?
 
-- Quantify changes in maritime traffic and vessel behavior before and after major events.
-- Build a reproducible end-to-end pipeline from raw AIS records to analysis-ready panels.
-- Prioritize interpretable baselines (statistical methods and anomaly detectors) before complex deep-learning models.
+- **Event-aware maritime analytics** for pre/post event behavior shifts.
+- **End-to-end reproducibility** from raw CSV to model-ready panels.
+- **Methodological guardrails** to reduce leakage and unsupported claims.
+- **Baseline-first modeling** before moving to heavier deep-learning approaches.
 
 ---
 
-## Repository Structure
+## 🧭 Table of Contents
+
+- [Project Layout](#-project-layout)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [CLI Guide](#-cli-guide)
+- [Output Artifacts](#-output-artifacts)
+- [Testing](#-testing)
+- [Research Guardrails](#-research-guardrails)
+- [Recommended Workflow](#-recommended-workflow)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+
+---
+
+## 🗂 Project Layout
 
 ```text
 mcis/
@@ -49,48 +75,42 @@ mcis/
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 ### Requirements
 
 - Python **3.11+**
 - `pip`
 
-### Base install
+### Base Install
 
 ```bash
 pip install -e .
 ```
 
-### Optional extras
+### Optional Extras
 
-```bash
-# Development dependencies (pytest, coverage, notebooks)
-pip install -e ".[dev]"
+| Extra | Includes | Command |
+|---|---|---|
+| `dev` | pytest, coverage, notebooks | `pip install -e ".[dev]"` |
+| `ml` | xgboost, torch, shap | `pip install -e ".[ml]"` |
+| `geo` | geopandas, shapely, folium, plotly | `pip install -e ".[geo]"` |
+| `all` | all optional groups | `pip install -e ".[all]"` |
 
-# ML dependencies (xgboost, torch, shap)
-pip install -e ".[ml]"
-
-# Geo / visualization dependencies (geopandas, shapely, folium, plotly)
-pip install -e ".[geo]"
-
-# Everything
-pip install -e ".[all]"
-```
-
-> Note: Some optional packages (e.g., `torch`, `geopandas`) may take significant time or system libraries to install.
+> [!NOTE]
+> Some optional packages (especially `torch`, `geopandas`) may require longer installs and additional system libraries.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### 1) Validate configuration and core guardrails
+### 1) Validate config + guardrails
 
 ```bash
 pytest tests/test_validation.py -v
 ```
 
-### 2) Run the data pipeline
+### 2) Run pipeline (load → clean → features → aggregate)
 
 ```bash
 python cli/run_pipeline.py \
@@ -119,17 +139,17 @@ python cli/run_model.py \
 
 ---
 
-## CLI Reference
+## 🧰 CLI Guide
 
-## `run_pipeline.py`
+### `cli/run_pipeline.py`
 
-Purpose:
-- Load raw AIS CSV data.
-- Apply cleaning and quality-flagging.
-- Engineer vessel-level features.
-- Aggregate to panel datasets (grid/day and Black Sea/day).
+**Purpose**
+- Load raw AIS CSV data
+- Apply cleaning and quality-flagging
+- Engineer vessel-level features
+- Aggregate to grid/day and Black Sea/day panels
 
-Example:
+**Example**
 
 ```bash
 python cli/run_pipeline.py \
@@ -140,13 +160,13 @@ python cli/run_pipeline.py \
   --date-end 2022-08-24
 ```
 
-## `run_analysis.py`
+### `cli/run_analysis.py`
 
-Purpose:
-- Execute selected analyses (event study, ITS, DiD, Granger) by metric.
-- Save result artifacts as JSON/structured tables.
+**Purpose**
+- Run selected analyses (event study, ITS, DiD, Granger) by metric
+- Save outputs as structured JSON/table artifacts
 
-Example:
+**Example**
 
 ```bash
 python cli/run_analysis.py \
@@ -156,13 +176,13 @@ python cli/run_analysis.py \
   --metrics vessel_count unique_mmsi mean_sog
 ```
 
-## `run_model.py`
+### `cli/run_model.py`
 
-Purpose:
-- Train/evaluate temporal anomaly and forecasting-error models.
-- Generate model artifacts, cards, and registry outputs.
+**Purpose**
+- Train/evaluate temporal anomaly and forecasting-error models
+- Generate model artifacts, model cards, and registry records
 
-Example:
+**Example**
 
 ```bash
 python cli/run_model.py \
@@ -173,9 +193,9 @@ python cli/run_model.py \
 
 ---
 
-## Typical Output Artifacts
+## 📦 Output Artifacts
 
-After successful runs, you should see artifacts such as:
+Typical outputs after successful execution:
 
 - `data/interim/ais_blacksea_cleaned.parquet`
 - `data/processed/ais_blacksea_features.parquet`
@@ -189,7 +209,7 @@ After successful runs, you should see artifacts such as:
 
 ---
 
-## Testing
+## ✅ Testing
 
 Run all tests:
 
@@ -211,52 +231,52 @@ pytest tests/test_loader.py tests/test_cleaner.py tests/test_features.py tests/t
 
 ---
 
-## Research Guardrails (Important)
+## 🛡 Research Guardrails
 
 MCIS intentionally enforces methodological constraints for research validity:
 
-1. **No random train/test splits** — use temporal splits only.
-2. **No leakage features in model inputs** — e.g., `days_to_t0`, `post_conflict` must not be used as features.
-3. **Validity/claim consistency** — inferential claims are restricted under non-empirical validity modes.
-4. **Baseline-first modeling** — interpretable statistical/anomaly baselines before complex deep models.
+1. **No random train/test split** — temporal split only.
+2. **No leakage features in model inputs** — e.g., `days_to_t0`, `post_conflict`.
+3. **Validity/claim consistency** — inferential claims are restricted under non-empirical modes.
+4. **Baseline-first strategy** — interpretable methods before complex deep models.
 
-For full policy details, refer to:
+For full policy details, see:
 - `ROADMAP.md`
 - `config/settings.yaml`
 - `mcis/validation.py`
 
 ---
 
-## Recommended Development Workflow
+## 🔁 Recommended Workflow
 
 1. Update `config/settings.yaml`.
 2. Run `pytest tests/test_validation.py -v`.
 3. Run `cli/run_pipeline.py` to generate data artifacts.
 4. Run `cli/run_analysis.py` for statistical outputs.
 5. Run `cli/run_model.py` for model outputs and model cards.
-6. Run full regression checks with `pytest tests/ --cov=mcis`.
+6. Run regression checks with `pytest tests/ --cov=mcis`.
 
 ---
 
-## Troubleshooting
+## 🧯 Troubleshooting
 
 - **`ModuleNotFoundError: No module named 'mcis'`**  
-  Ensure editable install was completed from repository root: `pip install -e .`
+  Run editable install from repo root: `pip install -e .`
 
-- **`SHAP not installed` message in model CLI**  
+- **`SHAP not installed` in model CLI**  
   Install optional dependency: `pip install shap>=0.44.0`
 
 - **Panel file not found**  
-  Run pipeline first with `--steps all` to create aggregated panel artifacts.
+  Run the pipeline first with `--steps all`.
 
 - **Missing model feature configuration**  
   Check `model.features_to_use` in `config/settings.yaml`.
 
 - **Memory pressure on large CSV files**  
-  Use date-range filtering (`--date-start`, `--date-end`) and/or `--limit` for development runs.
+  Use `--date-start`, `--date-end`, and/or `--limit` for development runs.
 
 ---
 
-## License
+## 📄 License
 
 MIT License.
