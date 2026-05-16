@@ -1,0 +1,11 @@
+{
+  "stage": "its_vessel_count",
+  "timestamp": "20260516_143259",
+  "data_validity_mode": "mixed",
+  "claim_level": "descriptive_evidence",
+  "conflict_t0": "2022-02-24",
+  "conflict_zone": "Black Sea / Sea of Azov",
+  "analysis": "its",
+  "metric": "vessel_count",
+  "status": "ok"
+}

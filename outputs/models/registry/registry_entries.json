@@ -1,0 +1,164 @@
+[
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 19,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:08.474577+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "ewma",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 17,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:08.496132+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 19,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:08.609698+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 19,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:08.721489+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 19,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:11.375381+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "synthetic",
+    "train_period": [
+      "2021-08-24",
+      "2022-01-15"
+    ],
+    "calibration_period": [
+      "2022-01-16",
+      "2022-01-31"
+    ],
+    "evaluation_period": [
+      "2022-02-01",
+      "2022-02-23"
+    ],
+    "feature_count": 3,
+    "first_alert_lead_days": 19,
+    "placebo_p_value": 0.6,
+    "timestamp": "2026-05-16T15:02:11.871586+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.61,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  }
+]

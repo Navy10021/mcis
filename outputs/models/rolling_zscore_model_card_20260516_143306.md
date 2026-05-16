@@ -1,0 +1,58 @@
+# Model Card — rolling_zscore
+
+## Intended Use
+
+Early-warning research prototype for detecting abnormal maritime behavioral signals.
+
+## Not Intended For
+
+Operational military decision-making, vessel interdiction, attribution, or standalone conflict prediction.
+
+## Model Details
+
+- **Model Name:** rolling_zscore
+- **Formulation:** anomaly
+- **Data Validity Mode:** mixed
+
+## Training Data
+
+- **Train Period:** 2021-11-24 to 2021-12-25
+- **Calibration Period:** 2021-12-26 to 2022-01-24
+- **Evaluation Period:** 2022-01-25 to 2022-02-23
+- **Feature Count:** 11
+- **Features:** vessel_count, mean_sog, std_sog, max_abs_rot, rot_spike_count, ais_silence_count, cargo_fraction, tanker_fraction, russian_flag_fraction, route_entropy, cog_variance
+
+## Evaluation Metrics
+
+- **threshold:** 0.7428013296894779
+- **first_alert_lead_days:** 29
+- **mean_alert_lead_days:** 28.0
+- **false_alarms_per_30_days:** 2.0
+- **n_alerts_pre:** 2
+- **n_alerts_warning_window:** 2
+- **n_alerts_post:** 0
+- **n_alerts_total:** 2
+- **alert_stability:** 1.0
+- **n_dates_pre:** 30
+- **n_dates_warning:** 30
+- **n_dates_post:** 0
+
+## Early Warning Performance
+
+- **First Alert Lead Days:** 29
+- **Alert Dates:** 2022-01-26, 2022-01-27
+- **Placebo p-value:** 0.0
+
+## Limitations
+
+- Single-event limitation: only one conflict onset date (2022-02-24).
+- Placebo test uses internal dates; results may not generalize.
+- Anomaly thresholds calibrated on 'normal' period only.
+
+## Output Schema
+
+```yaml
+model_name: rolling_zscore
+formulation: anomaly
+data_validity_mode: mixed
+```
