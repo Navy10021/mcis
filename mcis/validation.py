@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import platform
+import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -144,6 +148,12 @@ def write_run_metadata(
         "claim_level": config.get("project", {}).get("claim_level"),
         "conflict_t0": config.get("conflict", {}).get("t0"),
         "conflict_zone": config.get("conflict", {}).get("zone_name"),
+        "git_commit_hash": _safe_git_commit_hash(),
+        "config_snapshot_hash": _stable_config_hash(config),
+        "environment": {
+            "python_version": sys.version.split()[0],
+            "platform": platform.platform(),
+        },
     }
     if extra:
         metadata.update(extra)
@@ -152,3 +162,27 @@ def write_run_metadata(
         json.dump(metadata, f, indent=2, default=str)
 
     return path
+
+
+def _safe_git_commit_hash() -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip()
+    except Exception:
+        return None
+
+
+def _stable_config_hash(config: dict[str, Any]) -> str:
+    cfg = json.dumps(config, sort_keys=True, default=str, ensure_ascii=False)
+    return hashlib.sha256(cfg.encode("utf-8")).hexdigest()
+
+
+def compute_file_hash(path: str | Path, algo: str = "sha256") -> str:
+    h = hashlib.new(algo)
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()

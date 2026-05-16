@@ -12,7 +12,7 @@ import yaml
 
 from mcis.analysis import run_did, run_event_study, run_granger, run_its
 from mcis.config_schema import validate_config
-from mcis.validation import write_run_metadata
+from mcis.validation import compute_file_hash, write_run_metadata
 
 logger = logging.getLogger("mcis.cli.run_analysis")
 
@@ -70,6 +70,7 @@ def run_analysis(
     if panel is None:
         panel = str(Path(cfg["data"]["aggregated_dir"]) / "panel_blacksea.parquet")
     click.echo(f"Loading panel: {panel}")
+    panel_hash = compute_file_hash(panel) if Path(panel).exists() else None
     panel_df = pd.read_parquet(panel)
 
     analysis_list = [a.strip() for a in analyses.split(",")]
@@ -151,6 +152,8 @@ def run_analysis(
                     "analysis": analysis_name,
                     "metric": metric,
                     "status": result.get("status"),
+                    "input_file": str(panel),
+                    "input_file_hash": panel_hash,
                 }
                 result_filename = f"{analysis_name}_{metric}_{t0_date}.json"
                 result_path = tables_dir / result_filename

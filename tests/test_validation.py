@@ -13,6 +13,7 @@ from mcis.validation import (
     validate_required_columns,
     validate_temporal_split,
     write_run_metadata,
+    compute_file_hash,
 )
 
 
@@ -125,6 +126,15 @@ class TestValidateTemporalSplit:
             validate_temporal_split(panel, config)
 
 
+class TestComputeFileHash:
+
+    def test_compute_file_hash(self, tmp_path):
+        p = tmp_path / "sample.txt"
+        p.write_text("abc", encoding="utf-8")
+        h = compute_file_hash(p)
+        assert len(h) == 64
+
+
 class TestWriteRunMetadata:
     def test_writes_metadata_file(self, tmp_path, config):
         path = write_run_metadata(config, tmp_path, "test_stage")
@@ -137,6 +147,9 @@ class TestWriteRunMetadata:
         assert data["claim_level"] == "descriptive_evidence"
         assert "conflict_t0" in data
         assert "timestamp" in data
+        assert "git_commit_hash" in data
+        assert "config_snapshot_hash" in data
+        assert "environment" in data
 
     def test_extra_fields_included(self, tmp_path, config):
         import json

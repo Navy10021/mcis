@@ -14,7 +14,7 @@ from mcis.cleaner import AISCleaner
 from mcis.config_schema import validate_config
 from mcis.features import AISFeatureEngineer
 from mcis.loader import AISLoader
-from mcis.validation import validate_required_columns, write_run_metadata
+from mcis.validation import compute_file_hash, validate_required_columns, write_run_metadata
 
 logger = logging.getLogger("mcis.cli.run_pipeline")
 
@@ -64,6 +64,7 @@ def run_pipeline(
 
     if file is None:
         file = cfg["data"]["raw_dir"] + "/" + cfg["data"]["primary_file"]
+    input_hash = compute_file_hash(file) if Path(file).exists() else None
 
     step_list = [s.strip() for s in steps.split(",")]
 
@@ -84,7 +85,7 @@ def run_pipeline(
             limit=limit,
         )
         _log_step("load", time.time() - t0, len(df))
-        write_run_metadata(cfg, Path(cfg["data"]["raw_dir"]), "load", extra=loader_report)
+        write_run_metadata(cfg, Path(cfg["data"]["raw_dir"]), "load", extra={**loader_report, "input_file": str(file), "input_file_hash": input_hash})
         click.echo(f"  Schema: {len(df.columns)} cols, {len(df)} rows")
         click.echo(f"  Date range: {loader_report.get('date_min')} to {loader_report.get('date_max')}")
         click.echo(f"  Unique MMSI: {loader_report.get('n_unique_mmsi')}")
