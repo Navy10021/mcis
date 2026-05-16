@@ -10,6 +10,20 @@ from click.testing import CliRunner
 from cli.run_pipeline import run_pipeline
 from cli.run_analysis import run_analysis
 from cli.run_model import run_model
+from mcis.config_schema import Settings
+
+
+def _option_names(cmd) -> set[str]:
+    return {opt.name for opt in cmd.params if getattr(opt, "name", None)}
+
+
+def test_cli_contract_minimum_schema_alignment():
+    """Guard against drift between config schema sections and CLI surface."""
+    schema_sections = set(Settings.model_fields.keys())
+    assert {"data", "analysis", "model", "output", "conflict"}.issubset(schema_sections)
+    assert {"config", "panel", "analyses", "metrics", "output_dir"}.issubset(_option_names(run_analysis))
+    assert {"config", "panel", "models", "output_dir"}.issubset(_option_names(run_model))
+    assert {"config", "file", "steps", "output_dir"}.issubset(_option_names(run_pipeline))
 
 
 class TestRunPipeline:

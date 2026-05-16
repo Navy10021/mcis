@@ -10,7 +10,14 @@ import click
 import pandas as pd
 import yaml
 
-from mcis.analysis import run_did, run_event_study, run_granger, run_its
+from mcis.analysis import (
+    apply_multiple_testing,
+    run_did,
+    run_event_study,
+    run_granger,
+    run_its,
+    run_placebo_cutdates,
+)
 from mcis.config_schema import validate_config
 from mcis.validation import compute_file_hash, write_run_metadata
 
@@ -157,6 +164,24 @@ def run_analysis(
                 }
                 result_filename = f"{analysis_name}_{metric}_{t0_date}.json"
                 result_path = tables_dir / result_filename
+                if analysis_name == "event_study" and result.get("status") == "ok":
+                    placebo_offsets = cfg.get("analysis", {}).get(
+                        "placebo_cutdate_offsets",
+                        [-60, -45, -30, -15, 15, 30, 45, 60],
+                    )
+                    placebo_summary = run_placebo_cutdates(
+                        panel_df,
+                        metric=metric,
+                        candidate_offsets=placebo_offsets,
+                        estimation_window=tuple(cfg.get("analysis", {}).get("estimation_window", (-90, -31))),
+                        event_window=tuple(cfg.get("analysis", {}).get("event_window", (-30, 30))),
+                    )
+                    result["placebo_cutdates"] = placebo_summary
+                    result["multiple_testing"] = apply_multiple_testing(
+                        result.get("p_values", {}),
+                        alpha=cfg.get("analysis", {}).get("significance_level", 0.05),
+                    )
+
                 with open(result_path, "w", encoding="utf-8") as f:
                     json.dump(result, f, indent=2, default=str)
                 click.echo(f"    Saved: {result_path}")
