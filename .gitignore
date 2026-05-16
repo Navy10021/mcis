@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual env
+.venv/
+
+# Runtime outputs
+outputs/logs/
+outputs/tables/*.json
+outputs/models/*.json
+outputs/models/*.md
+outputs/metadata/*.json
+
+# Data artifacts
+data/interim/
+data/processed/
+data/aggregated/

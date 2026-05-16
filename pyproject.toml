@@ -51,3 +51,7 @@ include = ["mcis*"]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 pythonpath = ["."]
+filterwarnings = [
+    "ignore:verbose is deprecated since functions should not print results:FutureWarning",
+    "ignore:The NumPy global RNG was seeded by calling `np.random.seed`:FutureWarning",
+]

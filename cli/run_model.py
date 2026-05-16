@@ -22,7 +22,7 @@ from mcis.models.evaluate import (
 from mcis.models.forecasting import DEFAULT_FORECASTING_MODELS
 from mcis.models.model_card import generate_model_card
 from mcis.models.registry import ModelCardRegistry
-from mcis.validation import assert_no_leakage, write_run_metadata
+from mcis.validation import assert_no_leakage, compute_file_hash, write_run_metadata
 
 logger = logging.getLogger("mcis.cli.run_model")
 
@@ -169,6 +169,7 @@ def run_model(
     if panel is None:
         panel = str(Path(cfg["data"]["aggregated_dir"]) / "panel_blacksea.parquet")
     click.echo(f"Loading panel: {panel}")
+    panel_hash = compute_file_hash(panel) if Path(panel).exists() else None
     panel_df = pd.read_parquet(panel)
 
     model_cfg = cfg.get("model", {})
@@ -332,7 +333,7 @@ def run_model(
         click.echo(f"  Model card: {card_path}")
 
         registry.register_run(result)
-        write_run_metadata(cfg, models_dir, f"model_{model_name}", extra={"model": model_name})
+        write_run_metadata(cfg, models_dir, f"model_{model_name}", extra={"model": model_name, "input_file": str(panel), "input_file_hash": panel_hash})
         results_summary.append(result)
 
     # --- Forecasting Models ---
@@ -429,7 +430,7 @@ def run_model(
         click.echo(f"  Model card: {card_path}")
 
         registry.register_run(result)
-        write_run_metadata(cfg, models_dir, f"model_{model_name}", extra={"model": model_name})
+        write_run_metadata(cfg, models_dir, f"model_{model_name}", extra={"model": model_name, "input_file": str(panel), "input_file_hash": panel_hash})
         results_summary.append(result)
 
     click.echo("\nAll models complete.")
