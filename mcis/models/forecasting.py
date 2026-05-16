@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
+import os
 
 import numpy as np
 import pandas as pd
@@ -125,6 +126,11 @@ class LSTMForecaster:
         self._fitted_cols: list[str] | None = None
 
     def _import_torch(self) -> tuple[Any, Any, Any]:
+        if os.getenv("MCIS_ENABLE_TORCH", "0") != "1":
+            raise ImportError(
+                "LSTMForecaster requires PyTorch and is disabled by default. "
+                "Set MCIS_ENABLE_TORCH=1 after installing torch>=2.1.0."
+            )
         try:
             import torch
             import torch.nn as nn
@@ -271,6 +277,11 @@ class TCNForecaster:
         self._fitted_cols: list[str] | None = None
 
     def _import_torch(self) -> tuple[Any, Any, Any]:
+        if os.getenv("MCIS_ENABLE_TORCH", "0") != "1":
+            raise ImportError(
+                "TCNForecaster requires PyTorch and is disabled by default. "
+                "Set MCIS_ENABLE_TORCH=1 after installing torch>=2.1.0."
+            )
         try:
             import torch
             import torch.nn as nn
