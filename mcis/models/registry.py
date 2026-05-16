@@ -7,7 +7,16 @@ from typing import Any
 
 import pandas as pd
 
+
 from mcis.utils.io import ensure_dir
+
+
+def _dataframe_to_markdown(df: pd.DataFrame) -> str:
+    """Render DataFrame to markdown without hard dependency on tabulate."""
+    try:
+        return df.to_markdown(index=False)
+    except ImportError:
+        return df.to_string(index=False)
 
 
 class ModelCardRegistry:
@@ -109,7 +118,7 @@ class ModelCardRegistry:
                 "false_alarms_per_30_days", "alert_stability",
             ]
             display_df = df[[c for c in summary_cols if c in df.columns]].copy()
-            _add(display_df.to_markdown(index=False))
+            _add(_dataframe_to_markdown(display_df))
             _add("")
 
             _add("## Evaluation Metrics by Run")
@@ -120,7 +129,7 @@ class ModelCardRegistry:
             ]
             metrics_df = df[[c for c in metrics_cols if c in df.columns]].copy()
             if not metrics_df.empty and metrics_df.dropna(how="all", subset=metrics_df.columns.difference(["model_name"])).shape[0] > 0:
-                _add(metrics_df.to_markdown(index=False))
+                _add(_dataframe_to_markdown(metrics_df))
                 _add("")
 
             _add("## Per-Model Detail")
