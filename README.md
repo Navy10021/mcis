@@ -18,10 +18,10 @@ The current primary case study is Black Sea maritime dynamics around **February 
 
 ## ✨ Why MCIS?
 
-- **Event-aware maritime analytics** for pre/post event behavior shifts.
-- **End-to-end reproducibility** from raw CSV to model-ready panels.
-- **Methodological guardrails** to reduce leakage and unsupported claims.
-- **Baseline-first modeling** before moving to heavier deep-learning approaches.
+- **Event-aware Maritime Analytics** for pre/post event behavior shifts.
+- **End-to-end Reproducibility** from raw CSV to model-ready panels.
+- **Methodological Guardrails** to reduce leakage and unsupported claims.
+- **Baseline-first Modeling** before moving to heavier deep-learning approaches.
 
 ---
 
