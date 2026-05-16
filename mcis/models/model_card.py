@@ -59,6 +59,9 @@ def generate_model_card(
     _add(f"- **Model Name:** {model_name}")
     _add(f"- **Formulation:** {result.get('formulation', 'N/A')}")
     _add(f"- **Data Validity Mode:** {result.get('data_validity_mode', 'N/A')}")
+    _add(f"- **Git Commit Hash:** {result.get('git_commit_hash', 'N/A')}")
+    _add(f"- **Config Snapshot Hash:** {result.get('config_snapshot_hash', 'N/A')}")
+    _add(f"- **Input File Hash:** {result.get('input_file_hash', 'N/A')}")
 
     # Training data
     _add("")

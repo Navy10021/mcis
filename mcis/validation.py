@@ -160,8 +160,34 @@ def write_run_metadata(
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2, default=str)
+    _append_run_registry(output_dir, metadata, str(path))
 
     return path
+
+
+def _append_run_registry(output_dir: Path, metadata: dict[str, Any], metadata_path: str) -> None:
+    registry_dir = output_dir / "metadata"
+    ensure_dir(registry_dir)
+    registry_path = registry_dir / "index.json"
+    payload = {"runs": []}
+    if registry_path.exists():
+        try:
+            with open(registry_path, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+        except Exception:
+            payload = {"runs": []}
+    payload.setdefault("runs", [])
+    payload["runs"].append(
+        {
+            "timestamp": metadata.get("timestamp"),
+            "stage": metadata.get("stage"),
+            "git_commit_hash": metadata.get("git_commit_hash"),
+            "config_snapshot_hash": metadata.get("config_snapshot_hash"),
+            "metadata_path": metadata_path,
+        }
+    )
+    with open(registry_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, default=str)
 
 
 def _safe_git_commit_hash() -> str | None:
