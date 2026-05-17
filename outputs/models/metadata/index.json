@@ -1,0 +1,25 @@
+{
+  "runs": [
+    {
+      "timestamp": "20260517_113450",
+      "stage": "model_rolling_zscore",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\models\\model_rolling_zscore_20260517_113450.json"
+    },
+    {
+      "timestamp": "20260517_113451",
+      "stage": "model_ewma",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\models\\model_ewma_20260517_113451.json"
+    },
+    {
+      "timestamp": "20260517_120504",
+      "stage": "model_var",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+      "metadata_path": "outputs\\models\\model_var_20260517_120504.json"
+    }
+  ]
+}

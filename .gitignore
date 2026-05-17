@@ -14,6 +14,7 @@ outputs/models/*.md
 outputs/metadata/*.json
 
 # Data artifacts
+data/raw/
 data/interim/
 data/processed/
 data/aggregated/

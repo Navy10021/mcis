@@ -57,7 +57,7 @@ def run_its(
     X = np.column_stack(X_list)
     X = sm.add_constant(X)
 
-    model = sm.OLS(y, X).fit(cov_type="HC1")
+    model = sm.OLS(y, X).fit(cov_type="HAC", cov_kwds={"maxlags": 7})
 
     X_counterfactual = X.copy()
     for i, col in enumerate(X_cols):

@@ -1,8 +1,8 @@
 project:
   name: mcis
   random_seed: 42
-  data_validity_mode: mixed
-  claim_level: descriptive_evidence
+  data_validity_mode: empirical
+  claim_level: predictive_prototype
 
 data:
   raw_dir: data/raw
@@ -123,13 +123,13 @@ model:
     - vessel_count
     - mean_sog
     - std_sog
-    - max_abs_rot
-    - rot_spike_count
+    # - max_abs_rot
+    # - rot_spike_count
     - ais_silence_count
-    - cargo_fraction
-    - tanker_fraction
-    - russian_flag_fraction
-    - route_entropy
+    # - cargo_fraction
+    # - tanker_fraction
+    # - russian_flag_fraction
+    # - route_entropy
     - cog_variance
 
 validation:

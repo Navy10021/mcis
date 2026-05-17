@@ -143,8 +143,8 @@ class TestWriteRunMetadata:
         with open(path) as f:
             data = json.load(f)
         assert data["stage"] == "test_stage"
-        assert data["data_validity_mode"] == "mixed"
-        assert data["claim_level"] == "descriptive_evidence"
+        assert data["data_validity_mode"] == "empirical"
+        assert data["claim_level"] == "predictive_prototype"
         assert "conflict_t0" in data
         assert "timestamp" in data
         assert "git_commit_hash" in data

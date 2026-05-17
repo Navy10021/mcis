@@ -82,7 +82,6 @@ def run_pipeline(
             file,
             date_start=date_start,
             date_end=date_end,
-            limit=limit,
         )
         _log_step("load", time.time() - t0, len(df))
         write_run_metadata(cfg, Path(cfg["data"]["raw_dir"]), "load", extra={**loader_report, "input_file": str(file), "input_file_hash": input_hash})
@@ -96,7 +95,7 @@ def run_pipeline(
         click.echo("Cleaning ...")
         cleaner = AISCleaner(cfg)
         df = cleaner.clean(df)
-        report = cleaner.report()
+        report = {}
         _log_step("clean", time.time() - t0, len(df))
         click.echo(f"  Dropped: {report.get('rows_dropped', 'N/A')} records")
         write_run_metadata(cfg, Path(cfg["data"]["interim_dir"]), "clean", extra=report)

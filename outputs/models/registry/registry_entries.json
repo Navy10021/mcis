@@ -160,5 +160,86 @@
     "auc_roc": null,
     "auc_pr": null,
     "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "empirical",
+    "train_period": [
+      "2021-08-24",
+      "2021-12-25"
+    ],
+    "calibration_period": [
+      "2021-12-26",
+      "2022-01-24"
+    ],
+    "evaluation_period": [
+      "2022-01-25",
+      "2022-02-23"
+    ],
+    "feature_count": 11,
+    "first_alert_lead_days": 29,
+    "placebo_p_value": 0.375,
+    "timestamp": "2026-05-17T11:34:50.839376+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.0,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "ewma",
+    "formulation": "anomaly",
+    "data_validity_mode": "empirical",
+    "train_period": [
+      "2021-08-24",
+      "2021-12-25"
+    ],
+    "calibration_period": [
+      "2021-12-26",
+      "2022-01-24"
+    ],
+    "evaluation_period": [
+      "2022-01-25",
+      "2022-02-23"
+    ],
+    "feature_count": 11,
+    "first_alert_lead_days": 29,
+    "placebo_p_value": 0.375,
+    "timestamp": "2026-05-17T11:34:51.005366+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.0,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "var",
+    "formulation": "forecasting",
+    "data_validity_mode": "empirical",
+    "train_period": [
+      "2021-08-24",
+      "2021-12-25"
+    ],
+    "calibration_period": [
+      "2021-12-26",
+      "2022-01-24"
+    ],
+    "evaluation_period": [
+      "2022-01-25",
+      "2022-02-23"
+    ],
+    "feature_count": 5,
+    "first_alert_lead_days": 23,
+    "placebo_p_value": 0.0,
+    "timestamp": "2026-05-17T12:05:04.797203+00:00",
+    "n_alerts_warning_window": 2,
+    "false_alarms_per_30_days": 2.0,
+    "alert_stability": 1.0,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
   }
 ]

@@ -1,0 +1,424 @@
+{
+  "runs": [
+    {
+      "timestamp": "20260517_103148",
+      "stage": "event_study_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_vessel_count_20260517_103148.json"
+    },
+    {
+      "timestamp": "20260517_103148",
+      "stage": "event_study_unique_mmsi",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_unique_mmsi_20260517_103148.json"
+    },
+    {
+      "timestamp": "20260517_103149",
+      "stage": "event_study_mean_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_mean_sog_20260517_103149.json"
+    },
+    {
+      "timestamp": "20260517_103150",
+      "stage": "event_study_std_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_std_sog_20260517_103150.json"
+    },
+    {
+      "timestamp": "20260517_103151",
+      "stage": "event_study_max_abs_rot",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_max_abs_rot_20260517_103151.json"
+    },
+    {
+      "timestamp": "20260517_103152",
+      "stage": "event_study_rot_spike_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_rot_spike_count_20260517_103152.json"
+    },
+    {
+      "timestamp": "20260517_103152",
+      "stage": "event_study_ais_silence_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_ais_silence_count_20260517_103152.json"
+    },
+    {
+      "timestamp": "20260517_103153",
+      "stage": "event_study_mean_draught",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_mean_draught_20260517_103153.json"
+    },
+    {
+      "timestamp": "20260517_103154",
+      "stage": "event_study_cargo_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_cargo_fraction_20260517_103154.json"
+    },
+    {
+      "timestamp": "20260517_103155",
+      "stage": "event_study_tanker_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_tanker_fraction_20260517_103155.json"
+    },
+    {
+      "timestamp": "20260517_103156",
+      "stage": "event_study_russian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_russian_flag_fraction_20260517_103156.json"
+    },
+    {
+      "timestamp": "20260517_103157",
+      "stage": "event_study_ukrainian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_ukrainian_flag_fraction_20260517_103157.json"
+    },
+    {
+      "timestamp": "20260517_103158",
+      "stage": "event_study_route_entropy",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_route_entropy_20260517_103158.json"
+    },
+    {
+      "timestamp": "20260517_103159",
+      "stage": "event_study_cog_variance",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_cog_variance_20260517_103159.json"
+    },
+    {
+      "timestamp": "20260517_103200",
+      "stage": "event_study_sat_src_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\event_study_sat_src_fraction_20260517_103200.json"
+    },
+    {
+      "timestamp": "20260517_103200",
+      "stage": "its_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_vessel_count_20260517_103200.json"
+    },
+    {
+      "timestamp": "20260517_103200",
+      "stage": "its_unique_mmsi",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_unique_mmsi_20260517_103200.json"
+    },
+    {
+      "timestamp": "20260517_103200",
+      "stage": "its_mean_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_mean_sog_20260517_103200.json"
+    },
+    {
+      "timestamp": "20260517_103200",
+      "stage": "its_std_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_std_sog_20260517_103200.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_max_abs_rot",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_max_abs_rot_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_rot_spike_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_rot_spike_count_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_ais_silence_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_ais_silence_count_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_mean_draught",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_mean_draught_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_cargo_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_cargo_fraction_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_tanker_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_tanker_fraction_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_russian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_russian_flag_fraction_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_ukrainian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_ukrainian_flag_fraction_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103201",
+      "stage": "its_route_entropy",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_route_entropy_20260517_103201.json"
+    },
+    {
+      "timestamp": "20260517_103202",
+      "stage": "its_cog_variance",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_cog_variance_20260517_103202.json"
+    },
+    {
+      "timestamp": "20260517_103202",
+      "stage": "its_sat_src_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_sat_src_fraction_20260517_103202.json"
+    },
+    {
+      "timestamp": "20260517_103202",
+      "stage": "granger_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_vessel_count_20260517_103202.json"
+    },
+    {
+      "timestamp": "20260517_103202",
+      "stage": "granger_unique_mmsi",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_unique_mmsi_20260517_103202.json"
+    },
+    {
+      "timestamp": "20260517_103202",
+      "stage": "granger_mean_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_mean_sog_20260517_103202.json"
+    },
+    {
+      "timestamp": "20260517_103203",
+      "stage": "granger_std_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_std_sog_20260517_103203.json"
+    },
+    {
+      "timestamp": "20260517_103203",
+      "stage": "granger_max_abs_rot",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_max_abs_rot_20260517_103203.json"
+    },
+    {
+      "timestamp": "20260517_103203",
+      "stage": "granger_rot_spike_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_rot_spike_count_20260517_103203.json"
+    },
+    {
+      "timestamp": "20260517_103203",
+      "stage": "granger_ais_silence_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_ais_silence_count_20260517_103203.json"
+    },
+    {
+      "timestamp": "20260517_103203",
+      "stage": "granger_mean_draught",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_mean_draught_20260517_103203.json"
+    },
+    {
+      "timestamp": "20260517_103204",
+      "stage": "granger_cargo_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_cargo_fraction_20260517_103204.json"
+    },
+    {
+      "timestamp": "20260517_103204",
+      "stage": "granger_tanker_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_tanker_fraction_20260517_103204.json"
+    },
+    {
+      "timestamp": "20260517_103204",
+      "stage": "granger_russian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_russian_flag_fraction_20260517_103204.json"
+    },
+    {
+      "timestamp": "20260517_103204",
+      "stage": "granger_ukrainian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_ukrainian_flag_fraction_20260517_103204.json"
+    },
+    {
+      "timestamp": "20260517_103204",
+      "stage": "granger_route_entropy",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_route_entropy_20260517_103204.json"
+    },
+    {
+      "timestamp": "20260517_103205",
+      "stage": "granger_cog_variance",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_cog_variance_20260517_103205.json"
+    },
+    {
+      "timestamp": "20260517_103205",
+      "stage": "granger_sat_src_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\granger_sat_src_fraction_20260517_103205.json"
+    },
+    {
+      "timestamp": "20260517_113300",
+      "stage": "its_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_vessel_count_20260517_113300.json"
+    },
+    {
+      "timestamp": "20260517_113300",
+      "stage": "its_unique_mmsi",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_unique_mmsi_20260517_113300.json"
+    },
+    {
+      "timestamp": "20260517_113300",
+      "stage": "its_mean_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_mean_sog_20260517_113300.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_std_sog",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_std_sog_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_max_abs_rot",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_max_abs_rot_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_rot_spike_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_rot_spike_count_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_ais_silence_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_ais_silence_count_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_mean_draught",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_mean_draught_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_cargo_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_cargo_fraction_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_tanker_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_tanker_fraction_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_russian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_russian_flag_fraction_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_ukrainian_flag_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_ukrainian_flag_fraction_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_route_entropy",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_route_entropy_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_cog_variance",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_cog_variance_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260517_113301",
+      "stage": "its_sat_src_fraction",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
+      "metadata_path": "outputs\\tables\\its_sat_src_fraction_20260517_113301.json"
+    }
+  ]
+}

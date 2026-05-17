@@ -1,9 +1,9 @@
 {
   "model_name": "ewma",
   "formulation": "anomaly",
-  "data_validity_mode": "mixed",
+  "data_validity_mode": "empirical",
   "train_period": [
-    "2021-11-24",
+    "2021-08-24",
     "2021-12-25"
   ],
   "calibration_period": [
@@ -28,7 +28,7 @@
     "cog_variance"
   ],
   "metrics": {
-    "threshold": 0.9987450534450174,
+    "threshold": 0.9738887251471601,
     "first_alert_lead_days": 29,
     "mean_alert_lead_days": 28.0,
     "false_alarms_per_30_days": 2.0,
@@ -41,12 +41,18 @@
     "n_dates_warning": 30,
     "n_dates_post": 0
   },
+  "extra_metrics": {
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null,
+    "calibration_error": 0.0
+  },
   "alert_dates": [
     "2022-01-26",
     "2022-01-27"
   ],
   "first_alert_lead_days": 29,
-  "placebo_p_value": 0.0,
+  "placebo_p_value": 0.375,
   "caveats": [
     "Single-event limitation: only one conflict onset date (2022-02-24).",
     "Placebo test uses internal dates; results may not generalize.",

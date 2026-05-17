@@ -56,7 +56,7 @@ class TestDeepMerge:
 class TestValidateConfig:
     def test_valid_from_file(self):
         result = validate_config(str(CONFIG_PATH))
-        assert result["project"]["data_validity_mode"] == "mixed"
+        assert result["project"]["data_validity_mode"] == "empirical"
         assert result["conflict"]["t0"] == "2022-02-24"
         assert len(result["aggregation"]["metrics"]) == 17
 
@@ -67,7 +67,9 @@ class TestValidateConfig:
 
     def test_partial_config_merged_with_defaults(self):
         partial = {
-            "project": {"data_validity_mode": "synthetic"},
+            "project": {"data_validity_mode": "synthetic",
+                        "claim_level": "engineering_demo",
+            },
             "conflict": {
                 "t0": "2022-02-24",
                 "event_study_windows": [-7, 0, 7],
