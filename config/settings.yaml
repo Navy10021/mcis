@@ -92,7 +92,7 @@ aggregation:
     - mean_draught
     - cargo_fraction
     - tanker_fraction
-    - military_fraction
+    - military_para_fraction
     - russian_flag_fraction
     - ukrainian_flag_fraction
     - route_entropy
