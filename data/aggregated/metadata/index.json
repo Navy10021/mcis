@@ -1,0 +1,18 @@
+{
+  "runs": [
+    {
+      "timestamp": "20260518_120338",
+      "stage": "aggregate",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+      "metadata_path": "data\\aggregated\\aggregate_20260518_120338.json"
+    },
+    {
+      "timestamp": "20260518_121012",
+      "stage": "aggregate",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "669c3ceca3d3405ac84f47823fae4d043a7f3ce164494e84d85c5944480572b1",
+      "metadata_path": "data\\aggregated\\aggregate_20260518_121012.json"
+    }
+  ]
+}

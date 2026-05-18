@@ -1,0 +1,62 @@
+{
+  "stage": "clean",
+  "timestamp": "20260518_121012",
+  "data_validity_mode": "empirical",
+  "claim_level": "predictive_prototype",
+  "conflict_t0": "2022-02-24",
+  "conflict_zone": "Black Sea / Sea of Azov",
+  "git_commit_hash": null,
+  "config_snapshot_hash": "669c3ceca3d3405ac84f47823fae4d043a7f3ce164494e84d85c5944480572b1",
+  "environment": {
+    "python_version": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "coordinate_filter": {
+    "before": 524,
+    "after": 478
+  },
+  "sog_filter": {
+    "before": 478,
+    "after": 478
+  },
+  "rot_normalize": {
+    "before": 478,
+    "after": 478
+  },
+  "heading_normalize": {
+    "before": 478,
+    "after": 478
+  },
+  "cog_normalize": {
+    "before": 478,
+    "after": 478
+  },
+  "navstatus_normalize": {
+    "before": 478,
+    "after": 478
+  },
+  "dimension_normalize": {
+    "before": 478,
+    "after": 478
+  },
+  "dedup": {
+    "before": 478,
+    "after": 478
+  },
+  "min_obs_filter": {
+    "before": 478,
+    "after": 3
+  },
+  "quality_flags": {
+    "before": 3,
+    "after": 3
+  },
+  "total_initial": {
+    "before": 524,
+    "after": 524
+  },
+  "total_final": {
+    "before": 524,
+    "after": 3
+  }
+}
