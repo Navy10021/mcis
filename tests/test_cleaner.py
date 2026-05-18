@@ -117,9 +117,8 @@ class TestROTNormalize:
             "posDt": pd.Timestamp("2022-02-24", tz="UTC"),
         })
         result = cleaner._step_rot_normalize(df)
-        assert result.loc[0, "rot"] != 128.0
         assert np.isnan(result.loc[0, "rot"])
-        assert np.isnan(result.loc[1, "rot"])
+        assert result.loc[1, "rot"] == -127.0
 
     def test_rot_clipped_to_127(self, cleaner):
         df = pd.DataFrame({
