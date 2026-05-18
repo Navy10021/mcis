@@ -419,6 +419,27 @@
       "git_commit_hash": null,
       "config_snapshot_hash": "27beef97acb119bbc0c9f454c49ad862efa5ef752ebff593c56adbf110b14fed",
       "metadata_path": "outputs\\tables\\its_sat_src_fraction_20260517_113301.json"
+    },
+    {
+      "timestamp": "20260518_120347",
+      "stage": "event_study_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+      "metadata_path": "outputs\\tables\\event_study_vessel_count_20260518_120347.json"
+    },
+    {
+      "timestamp": "20260518_120347",
+      "stage": "its_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+      "metadata_path": "outputs\\tables\\its_vessel_count_20260518_120347.json"
+    },
+    {
+      "timestamp": "20260518_120347",
+      "stage": "granger_vessel_count",
+      "git_commit_hash": null,
+      "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+      "metadata_path": "outputs\\tables\\granger_vessel_count_20260518_120347.json"
     }
   ]
 }

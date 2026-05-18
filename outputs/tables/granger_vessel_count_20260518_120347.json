@@ -1,0 +1,19 @@
+{
+  "stage": "granger_vessel_count",
+  "timestamp": "20260518_120347",
+  "data_validity_mode": "empirical",
+  "claim_level": "predictive_prototype",
+  "conflict_t0": "2022-02-24",
+  "conflict_zone": "Black Sea / Sea of Azov",
+  "git_commit_hash": null,
+  "config_snapshot_hash": "fc72a9c072c6b84159dd94efe03d897ca3c3f8efd859699812451c2209b4ccb0",
+  "environment": {
+    "python_version": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "analysis": "granger",
+  "metric": "vessel_count",
+  "status": "insufficient_data",
+  "input_file": "data/aggregated/panel_blacksea.parquet",
+  "input_file_hash": "3ab410455228774cf3cee188db94f365b5cef329ed0706cad936785bde2cf7e9"
+}

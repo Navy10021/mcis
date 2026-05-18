@@ -1,0 +1,7 @@
+{
+  "predictor": "vessel_count",
+  "target": "post_conflict",
+  "status": "insufficient_data",
+  "n_observations": 2,
+  "max_lag": 14
+}

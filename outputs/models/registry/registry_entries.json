@@ -241,5 +241,47 @@
     "auc_roc": null,
     "auc_pr": null,
     "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "empirical",
+    "train_period": [
+      "N/A",
+      "N/A"
+    ],
+    "calibration_period": null,
+    "evaluation_period": null,
+    "feature_count": 5,
+    "first_alert_lead_days": null,
+    "placebo_p_value": null,
+    "timestamp": "2026-05-18T13:06:14.351648+00:00",
+    "n_alerts_warning_window": 0,
+    "false_alarms_per_30_days": null,
+    "alert_stability": null,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
+  },
+  {
+    "model_name": "rolling_zscore",
+    "formulation": "anomaly",
+    "data_validity_mode": "empirical",
+    "train_period": [
+      "N/A",
+      "N/A"
+    ],
+    "calibration_period": null,
+    "evaluation_period": null,
+    "feature_count": 5,
+    "first_alert_lead_days": null,
+    "placebo_p_value": null,
+    "timestamp": "2026-05-18T13:15:38.674128+00:00",
+    "n_alerts_warning_window": 0,
+    "false_alarms_per_30_days": null,
+    "alert_stability": null,
+    "auc_roc": null,
+    "auc_pr": null,
+    "brier_score": null
   }
 ]
