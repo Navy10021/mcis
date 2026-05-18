@@ -11,6 +11,8 @@ import numpy as np
 import pandas as pd
 import yaml
 
+import mcis.compat  # noqa: F401
+
 from mcis.config_schema import validate_config
 from mcis.models.anomaly import DEFAULT_ANOMALY_MODELS
 from mcis.models.evaluate import (
@@ -185,6 +187,8 @@ def run_model(
     warning_days = model_cfg.get("early_warning_window_days", 30)
 
     panel_df["date"] = panel_df.index if "date" not in panel_df.columns else panel_df["date"]
+    if hasattr(panel_df["date"].dtype, "tz") and panel_df["date"].dtype.tz is not None:
+        panel_df["date"] = panel_df["date"].dt.tz_localize(None)
     panel_df = panel_df.sort_values("date")
 
     train_end = pd.Timestamp(model_cfg.get("train_normal_end", "2021-12-25"))
@@ -198,10 +202,19 @@ def run_model(
     eval_df = panel_df[(panel_df["date"] >= eval_start) & (panel_df["date"] <= eval_end)].copy()
     post_df = panel_df[panel_df["date"] >= t0].copy()
 
-    click.echo(f"  Train: {train_df['date'].min().date()} \u2192 {train_df['date'].max().date()} ({len(train_df)} days)")
-    click.echo(f"  Calibration: {calib_df['date'].min().date()} \u2192 {calib_df['date'].max().date()} ({len(calib_df)} days)")
-    click.echo(f"  Event eval: {eval_df['date'].min().date()} \u2192 {eval_df['date'].max().date()} ({len(eval_df)} days)")
-    click.echo(f"  Post-event: {post_df['date'].min().date()} \u2192 {post_df['date'].max().date()} ({len(post_df)} days)")
+    def _fmt_date_range(d: pd.DataFrame) -> str:
+        if d.empty:
+            return "empty"
+        return f"{d['date'].min().date()} \u2192 {d['date'].max().date()}"
+
+    click.echo(f"  Train: {_fmt_date_range(train_df)} ({len(train_df)} days)")
+    click.echo(f"  Calibration: {_fmt_date_range(calib_df)} ({len(calib_df)} days)")
+    click.echo(f"  Event eval: {_fmt_date_range(eval_df)} ({len(eval_df)} days)")
+    click.echo(f"  Post-event: {_fmt_date_range(post_df)} ({len(post_df)} days)")
+
+    if train_df.empty and calib_df.empty and eval_df.empty:
+        click.echo("  No data available for model training. Skipping.", err=True)
+        return
 
     train_X = train_df[feature_cols].fillna(0)
     calib_X = calib_df[feature_cols].fillna(0)

@@ -9,6 +9,8 @@ from typing import Any
 import click
 import yaml
 
+import mcis.compat  # noqa: F401  (apply NumPy/statsmodels compat patches)
+
 from mcis.aggregator import AISAggregator
 from mcis.cleaner import AISCleaner
 from mcis.config_schema import validate_config
@@ -87,7 +89,7 @@ def run_pipeline(
         write_run_metadata(cfg, Path(cfg["data"]["raw_dir"]), "load", extra={**loader_report, "input_file": str(file), "input_file_hash": input_hash})
         click.echo(f"  Schema: {len(df.columns)} cols, {len(df)} rows")
         click.echo(f"  Date range: {loader_report.get('date_min')} to {loader_report.get('date_max')}")
-        click.echo(f"  Unique MMSI: {loader_report.get('n_unique_mmsi')}")
+        click.echo(f"  Unique MMSI: {loader_report.get('unique_mmsi')}")
 
     # ---------- Clean ----------
     if "clean" in step_list and df is not None:
@@ -95,9 +97,10 @@ def run_pipeline(
         click.echo("Cleaning ...")
         cleaner = AISCleaner(cfg)
         df = cleaner.clean(df)
-        report = {}
+        report = cleaner.cleaning_report()
         _log_step("clean", time.time() - t0, len(df))
-        click.echo(f"  Dropped: {report.get('rows_dropped', 'N/A')} records")
+        rows_dropped = report.get("total_initial", {}).get("after", 0) - report.get("total_final", {}).get("after", 0)
+        click.echo(f"  Dropped: {rows_dropped} records")
         write_run_metadata(cfg, Path(cfg["data"]["interim_dir"]), "clean", extra=report)
 
         out_path = Path(cfg["data"]["interim_dir"]) / "ais_blacksea_cleaned.parquet"

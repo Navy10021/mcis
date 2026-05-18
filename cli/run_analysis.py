@@ -10,6 +10,8 @@ import click
 import pandas as pd
 import yaml
 
+import mcis.compat  # noqa: F401
+
 from mcis.analysis import (
     apply_multiple_testing,
     run_did,
@@ -85,7 +87,7 @@ def run_analysis(
     if metrics:
         metric_list = [m.strip() for m in metrics.split(",")]
     if metric_list is None:
-        metric_list = cfg.get("analysis", {}).get("event_study_metric", [])
+        metric_list = cfg.get("aggregation", {}).get("metrics", ["vessel_count"])
         if isinstance(metric_list, str):
             metric_list = [metric_list]
 
