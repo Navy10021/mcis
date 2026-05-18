@@ -56,6 +56,7 @@ mcis/
 │   ├── processed/            # Feature-engineered artifacts
 │   └── aggregated/           # Panel-level Parquet outputs
 ├── mcis/
+│   ├── compat.py             # Dependency compatibility shims (NumPy, SciPy, statsmodels)
 │   ├── loader.py
 │   ├── cleaner.py
 │   ├── features.py
@@ -63,11 +64,12 @@ mcis/
 │   ├── validation.py
 │   ├── analysis/
 │   ├── models/
-│   ├── reporting/
 │   ├── viz/
 │   └── utils/
+├── notebook/
+│   └── mcis_pipeline.ipynb   # End-to-end Jupyter notebook
 ├── outputs/                  # Tables, metadata, model artifacts, reports
-├── tests/                    # Pytest suite
+├── tests/                    # Pytest suite (376 tests)
 ├── ROADMAP.md                # Detailed technical roadmap and guardrails
 ├── pyproject.toml
 └── requirements.txt
@@ -136,6 +138,15 @@ python cli/run_model.py \
   --panel data/aggregated/panel_blacksea.parquet \
   --models rolling_zscore ewma robust_mahalanobis
 ```
+
+### 5) Explore via Jupyter notebook
+
+```bash
+jupyter notebook notebook/mcis_pipeline.ipynb
+```
+
+The notebook covers the full pipeline: data loading, cleaning, feature engineering, aggregation, event studies,
+ITS/Granger/DiD analysis, anomaly detection, forecasting, model cards, and interactive maps.
 
 ---
 
@@ -231,6 +242,25 @@ pytest tests/test_loader.py tests/test_cleaner.py tests/test_features.py tests/t
 
 ---
 
+## 🔧 Dependency Compatibility
+
+MCIS includes a compatibility shim (`mcis/compat.py`) that patches breaking changes in commonly paired
+versions of NumPy, SciPy, and statsmodels:
+
+| Issue | Symptom | Fix |
+|---|---|---|
+| `np.MachAr` removed in NumPy ≥2.0 | `AttributeError` in statsmodels internals | `compat.py` restores `np.MachAr` |
+| `scipy.signal.signaltools._centered` moved in SciPy ≥1.17 | `ImportError` in statsmodels internals | `compat.py` restores the import path |
+
+The compat module is imported automatically at the top of all CLI entrypoints and package `__init__.py` files
+so patches apply before any statsmodels-dependent code runs.
+
+**If you encounter missing-attribute errors from statsmodels**, ensure `import mcis.compat` runs before
+any statsmodels imports (lazy imports are used in `mcis/analysis/its.py`, `mcis/analysis/did.py`,
+`mcis/analysis/granger.py` and optional geo deps in `mcis/viz/maps.py`).
+
+---
+
 ## 🛡 Research Guardrails
 
 MCIS intentionally enforces methodological constraints for research validity:
@@ -274,6 +304,18 @@ For full policy details, see:
 
 - **Memory pressure on large CSV files**  
   Use `--date-start`, `--date-end`, and/or `--limit` for development runs.
+
+- **`AttributeError: module 'numpy' has no attribute 'MachAr'`**  
+  Upgrade mismatch between NumPy ≥2.0 and statsmodels 0.14.x. Fixed automatically by `mcis/compat.py` — ensure you import `mcis.compat` before any statsmodels calls.
+
+- **`ImportError: cannot import name '_centered' from 'scipy.signal.signaltools'`**  
+  SciPy ≥1.17 moved this private function. Fixed automatically by `mcis/compat.py`.
+
+- **`ModuleNotFoundError: No module named 'folium'` or `'plotly'`**  
+  Install geo extras: `pip install -e ".[geo]"`. The notebook and code gracefully degrade with clear error messages when these are missing.
+
+- **Notebook cells fail with stale imports after code changes**  
+  Restart the kernel (Kernel → Restart & Run All) to pick up updated `.py` files.
 
 ---
 
