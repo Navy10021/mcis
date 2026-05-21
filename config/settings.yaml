@@ -9,15 +9,16 @@ data:
   interim_dir: data/interim
   processed_dir: data/processed
   aggregated_dir: data/aggregated
-  primary_file: ais_blacksea_12m.csv
+  primary_file: ais_blacksea_3y.csv
   dev_file: ais_blacksea_6m.csv
+  full_file: ais_blacksea_3y.csv
 
 conflict:
   t0: "2022-02-24"
   zone_name: "Black Sea / Sea of Azov"
-  pre_window_days: 90
-  post_window_days: 90
-  event_study_windows: [-30, -21, -14, -7, -3, 0, 3, 7, 14, 21, 30]
+  pre_window_days: 184
+  post_window_days: 912
+  event_study_windows: [-180, -90, -30, -14, -7, -3, 0, 3, 7, 14, 30, 90, 180, 365, 730]
 
 spatial:
   lon_min: 27.5
@@ -112,13 +113,13 @@ model:
   lookahead_days: 7
   early_warning_window_days: 30
   train_normal_start: "2021-08-24"
-  train_normal_end: "2021-12-25"
-  calibration_start: "2021-12-26"
-  calibration_end: "2022-01-24"
-  event_eval_start: "2022-01-25"
+  train_normal_end: "2022-01-24"
+  calibration_start: "2022-01-25"
+  calibration_end: "2022-02-09"
+  event_eval_start: "2022-02-10"
   event_eval_end: "2022-02-23"
   post_event_start: "2022-02-24"
-  post_event_end: "2022-08-24"
+  post_event_end: "2024-08-24"
   features_to_use:
     - vessel_count
     - mean_sog
